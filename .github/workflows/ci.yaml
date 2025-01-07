@@ -37,6 +37,9 @@ jobs:
       with:
         dotnet-version: ${{ env.NETCORE_VERSION }}
 
+    - name: Install ICU libraries
+      run: sudo apt-get install -y libicu-dev
+
     - name: Restore packages
       run: dotnet restore
 

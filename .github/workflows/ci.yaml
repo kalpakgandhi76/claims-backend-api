@@ -37,8 +37,8 @@ jobs:
       with:
         dotnet-version: ${{ env.NETCORE_VERSION }}
 
-    - name: Install ICU libraries
-      run: sudo apt-get install -y libicu-dev
+    - name: Disable Globalization
+      run: echo "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1" >> $GITHUB_ENV
 
     - name: Restore packages
       run: dotnet restore

@@ -58,10 +58,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Azure Login using Service Principal
+      - name: Login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ '${{ secrets.AZURE_CREDENTIALS }}' }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Azure service principal credentials
+          enable-AzPSSession: false
+          environment: azurecloud
+          allow-no-subscriptions: false
+          audience: api://AzureADTokenExchange
+          auth-type: SERVICE_PRINCIPAL
 
       - name: Download Artifact
         uses: actions/download-artifact@v3

@@ -12,7 +12,7 @@
 name: "Build, Publish and Deploy"
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:    
 
 env:
   AZURE_WEBAPP_NAME: claim-backend-api # set this to your application's name
@@ -77,7 +77,7 @@ jobs:
       - name: Deploy to Dev Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ '${{ github.event.inputs.appname }}' }}
+          app-name: ${{ '${{ env.AZURE_WEBAPP_NAME }}' }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Validate Dev Deployment

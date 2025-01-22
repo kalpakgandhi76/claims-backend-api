@@ -16,5 +16,11 @@ namespace hello_world_api.Controllers
             return "Hello Backstage Developers!!!!!!";
         }
 
+        [HttpGet("status")]
+        public string Status()
+        {
+            return "API is working successfully.";
+        }
+
     }
 }
